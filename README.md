@@ -1,17 +1,24 @@
-## Foundry
+## Account Abstraction
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+**On ETH & ZkSync**
 
-Foundry consists of:
+Allowing EoA to behave like smart contracts.
+Validation of the transaction could be custom logic (not just by PK signature).
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+You can use Paymaster as the sponsors for the transaction fees.
+It is possible to pay fees not just in native token, but also with ERC-20 tokens.
+We are not using paymasters in this codebase.
+
+Project consists of:
+
+- **ETH Account abstraction**: There it is not natively build-in, so we need to use "alt-mempools" and EntryPoint contract
+- **AA on ZkSync**: Native part of L2
 
 ## Documentation
 
-https://book.getfoundry.sh/
+https://eips.ethereum.org/EIPS/eip-4337
+
+https://docs.zksync.io/build/developer-reference/ethereum-differences/native-vs-eip4337
 
 ## Usage
 
@@ -27,40 +34,9 @@ $ forge build
 $ forge test
 ```
 
-### Format
+### Deploy and send TX
 
-```shell
-$ forge fmt
-```
+Deploying to ZkSync is a little bit tricky right now..
+Requirements and procedures as explained here:
 
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+https://github.com/Cyfrin/minimal-account-abstraction?tab=readme-ov-file#getting-started
